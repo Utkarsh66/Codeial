@@ -1,0 +1,11 @@
+footer {
+  background-color: grey; }
+  footer ul {
+    font-size: larger;
+    font-weight: 400;
+    font-family: sans-serif;
+    color: white;
+    padding: 7px;
+    list-style: none; }
+    footer ul li {
+      display: inline; }
