@@ -1,5 +1,6 @@
 const Post = require('../models/post')
 const db = require('../config/mongoose');
+const Comment = require('../models/comment');
 
 
 module.exports.create = function(req,res){
@@ -11,4 +12,18 @@ Post.create({
 
     return res.redirect('back');
 });
+}
+
+module.exports.destroy = function(req,res){
+   // console.log(req);
+    Post.findById(req.params.id, function(err, post){
+
+        // .id means converting the object id into string
+        if(post.user == req.user.id){
+            post.remove();
+        }
+        Comment.deleteMany({post: req.params.id}, function(err){
+            return res.redirect('back');
+        })
+    })
 }
